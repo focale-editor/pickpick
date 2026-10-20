@@ -1,0 +1,57 @@
+name: pickpick
+description: Pick an opaque sRGB color anywhere on screen with native pickers on macOS, Linux, Windows, and supported web browsers.
+version: 0.1.0
+homepage: https://github.com/focale-editor/pickpick
+repository: https://github.com/focale-editor/pickpick
+
+topics:
+  - color
+  - eyedropper
+  - desktop
+  - flutter-plugin
+  - web
+
+screenshots:
+  - description: 'A flat illustration of picking a screen color with an eyedropper.'
+    path: screenshots/overview.png
+
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+  flutter: '>=3.47.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  dbus: ^0.7.15
+  plugin_platform_interface: ^2.1.8
+  uuid: ^4.6.0
+  web: ^1.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  checks: ^0.3.2
+  release: ^0.1.11
+
+flutter:
+  plugin:
+    platforms:
+      linux:
+        dartPluginClass: PickpickLinux
+        dartFileName: src/linux.dart
+      macos:
+        pluginClass: PickpickPlugin
+      web:
+        pluginClass: PickpickWeb
+        fileName: src/web.dart
+      windows:
+        pluginClass: PickpickPluginCApi
+
+release:
+  changelog:
+    header: '# 📰 Pickpick changelog'
+    defaultIgnoredTypes: ['test']
+    defaultIgnoredScopes: ['repo', 'docs', 'version', 'deps', 'tools']
